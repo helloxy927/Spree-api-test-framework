@@ -1,4 +1,4 @@
-﻿# 自托管 Runner（Windows + Git Bash）
+# 自托管 Runner（Windows + Git Bash）
 name: api-tests
 
 on:
@@ -100,7 +100,7 @@ jobs:
             MARKER="$INPUT"
           else
             # push 只跑冒烟，快速反馈
-            MARKER=""
+            MARKER="smoke"
           fi
 
           echo "event=$EVENT marker=${MARKER:-<全量>}"
