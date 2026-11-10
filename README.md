@@ -31,6 +31,9 @@ Copy-Item .env.example .env
 # 3) 自检：接口通不通、数据库通不通
 python scripts/check_env.py
 
+# 3.5) 修正示例数据，让商品对 Store API 可见（幂等，可重复执行）
+python scripts/prepare_sut.py
+
 # 4) 跑冒烟
 pytest -m smoke
 

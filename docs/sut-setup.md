@@ -142,3 +142,60 @@ Spree 官方支持 Render / Railway / Fly.io（项目自带 `render.yaml`），�
 | `spree api-key create` 找不到命令 | 没在项目目录、或 CLI 未安装 | 回到 `my-store` 目录；或直接用后台创建 |
 | 数据库连不上 | 没做端口映射 / 密码不对 | 回到第 4 节；`docker compose exec db psql -U spree` 验证 |
 | 登录 401 | 账号没注册 | 先执行第 3 节的注册请求 |
+
+---
+
+## 7. 测试环境必须做的两项 SUT 侧配置
+
+这两项改动在 Spree 项目里（不在本仓库），换一台机器重搭环境时**必须重做**，否则会出现「接口全对但商品列表是空的」「测试被 429 打断」这类假失败。
+
+### 7.1 让示例商品对 Store API 可见
+
+`spree sample-data` 灌进去的数据默认不可见，缺四样东西：products↔stores 关联、`available_on`、`published_at`、店铺币种下的基价（示例数据的 CNY 价格全挂在 price_list 上）。
+
+不用手工补，本仓库提供了幂等脚本：
+
+```powershell
+python scripts/prepare_sut.py
+```
+
+它会补齐上述四项、清一次 `solid_cache`、并确保测试顾客存在，最后打印 Store API 的商品数。**商品数必须 > 0**，否则 product 模块会失败。
+
+### 7.2 放宽测试环境的限流
+
+Spree 默认对 `POST /auth/login` 限流 **5 次/分钟/IP**、`POST /customers` **3 次/分钟/IP**。自动化测试集中打这两个接口，会把自己打成 `429 rate_limit_exceeded`，看起来像用例失败，其实是限流。
+
+在 Spree 项目里加一个 initializer，并挂进 web 容器：
+
+```powershell
+# my-store/spree_extra/zz_test_rate_limits.rb
+Spree::Api::Config[:rate_limit_login] = 1_000
+Spree::Api::Config[:rate_limit_register] = 1_000
+Spree::Api::Config[:rate_limit_refresh] = 1_000
+Spree::Api::Config[:rate_limit_per_key] = 10_000
+```
+
+```yaml
+# my-store/docker-compose.yml → services.web.volumes 追加
+      - ./spree_extra/zz_test_rate_limits.rb:/rails/config/initializers/zz_test_rate_limits.rb:ro
+```
+
+改完重建一次容器：
+
+```powershell
+docker compose up -d web
+```
+
+> 生产环境不要这么配。测试环境放宽限流是常见做法，目的是让「失败」只代表真实缺陷。
+
+### 7.3 顾客相关接口路径（v6）
+
+| 能力 | 路径 |
+|---|---|
+| 当前用户资料 | `GET /api/v3/store/customers/me` |
+| 我的订单 | `GET /api/v3/store/customers/me/orders` |
+| 我的地址 | `GET /api/v3/store/customers/me/addresses` |
+| 当前店铺 | `GET /api/v3/store/store` |
+
+> 注意：`/account`、`/orders`、`/addresses` 这几个 v2 时代的路径在 v3 里是 404，别踩。
+
