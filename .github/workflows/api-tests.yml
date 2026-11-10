@@ -1,13 +1,14 @@
+﻿# 自托管执行：Runner 跑在部署了 Spree 的本机上，可直连 localhost
 name: api-tests
 
 on:
   schedule:
-    # UTC 18:00 = 北京时间次日 02:00；cron 只认 UTC
+    # UTC 18:00 = 鍖椾含鏃堕棿娆℃棩 02:00锛沜ron 鍙 UTC
     - cron: "0 18 * * *"
   workflow_dispatch:
     inputs:
       marker:
-        description: "pytest -m 表达式（smoke / not slow / 空=全量）"
+        description: "pytest -m 琛ㄨ揪寮忥紙smoke / not slow / 绌?鍏ㄩ噺锛?
         default: "smoke"
         required: false
   push:
@@ -25,14 +26,14 @@ concurrency:
 
 jobs:
   test:
-    # 自托管 Runner：跑在部署了 Spree 的那台机器上，才能访问 localhost:3000 和本地数据库
+    # 鑷墭绠?Runner锛氳窇鍦ㄩ儴缃蹭簡 Spree 鐨勯偅鍙版満鍣ㄤ笂锛屾墠鑳借闂?localhost:3000 鍜屾湰鍦版暟鎹簱
     runs-on: self-hosted
     timeout-minutes: 30
-    # Windows Runner 默认用 PowerShell，这里统一走 bash（Git Bash）
+    # Windows Runner 榛樿鐢?PowerShell锛岃繖閲岀粺涓€璧?bash锛圙it Bash锛?
     defaults:
       run:
         shell: bash
-    # 发布报告到 gh-pages 需要写权限，否则 peaceiris 那步会 403
+    # 鍙戝竷鎶ュ憡鍒?gh-pages 闇€瑕佸啓鏉冮檺锛屽惁鍒?peaceiris 閭ｆ浼?403
     permissions:
       contents: write
 
@@ -45,13 +46,13 @@ jobs:
           cache: pip
           cache-dependency-path: requirements.txt
 
-      - name: 安装依赖
+      - name: 瀹夎渚濊禆
         run: pip install -r requirements.txt
 
-      - name: 安装 Allure CLI
+      - name: 瀹夎 Allure CLI
         run: npm install -g allure-commandline
 
-      - name: 运行接口测试
+      - name: 杩愯鎺ュ彛娴嬭瘯
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
           API_KEY: ${{ secrets.API_KEY }}
@@ -67,11 +68,11 @@ jobs:
             pytest -m "$MARKER" --alluredir=allure-results
           fi
 
-      - name: 生成 Allure 报告
+      - name: 鐢熸垚 Allure 鎶ュ憡
         if: always()
         run: allure generate allure-results -o allure-report --clean
 
-      - name: 清理测试数据
+      - name: 娓呯悊娴嬭瘯鏁版嵁
         if: always()
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
@@ -80,7 +81,7 @@ jobs:
           RUN_ID: ${{ github.run_id }}
         run: python scripts/cleanup_test_data.py --yes
 
-      - name: 上传报告与日志
+      - name: 涓婁紶鎶ュ憡涓庢棩蹇?
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -90,7 +91,7 @@ jobs:
             allure-results
           retention-days: 30
 
-      - name: 发布到 GitHub Pages
+      - name: 鍙戝竷鍒?GitHub Pages
         if: always() && (github.ref == 'refs/heads/main' || github.event_name == 'schedule')
         uses: peaceiris/actions-gh-pages@v4
         with:
@@ -98,3 +99,4 @@ jobs:
           publish_branch: gh-pages
           publish_dir: ./allure-report
           keep_files: true
+
