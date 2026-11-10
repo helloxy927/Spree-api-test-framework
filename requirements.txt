@@ -1,0 +1,9 @@
+requests>=2.32,<3
+pytest>=8.2,<9
+pytest-xdist>=3.6
+pytest-rerunfailures>=14
+allure-pytest>=2.13
+python-dotenv>=1.0
+Faker>=25
+SQLAlchemy>=2.0,<3
+psycopg[binary]>=3.1

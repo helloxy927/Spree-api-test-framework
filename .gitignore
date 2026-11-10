@@ -1,0 +1,12 @@
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.pytest_cache/
+allure-results/
+allure-report/
+logs/
+.idea/
+.vscode/
