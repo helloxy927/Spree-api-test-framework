@@ -1,1 +1,1 @@
-[{"uid":"731b65f9039b17fe","name":"test_missing_api_key_returns_401","time":{"start":1794312510090,"stop":1794312511593,"duration":1503},"status":"broken","severity":"normal"},{"uid":"101d112e02f343c0","name":"test_products_returns_list","time":{"start":1794312508473,"stop":1794312509978,"duration":1505},"status":"broken","severity":"normal"}]
+[]
