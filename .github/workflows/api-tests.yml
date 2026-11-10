@@ -25,8 +25,13 @@ concurrency:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    # 自托管 Runner：跑在部署了 Spree 的那台机器上，才能访问 localhost:3000 和本地数据库
+    runs-on: self-hosted
     timeout-minutes: 30
+    # Windows Runner 默认用 PowerShell，这里统一走 bash（Git Bash）
+    defaults:
+      run:
+        shell: bash
     # 发布报告到 gh-pages 需要写权限，否则 peaceiris 那步会 403
     permissions:
       contents: write
