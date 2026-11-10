@@ -44,6 +44,7 @@ def _build_run_id() -> str:
 class Settings:
     base_url: str
     api_key: str
+    admin_api_key: str
     customer_email: str
     customer_password: str
     db_dsn: str
@@ -66,6 +67,7 @@ def get_settings() -> Settings:
     return Settings(
         base_url=_env("BASE_URL", "http://localhost:3000").rstrip("/"),
         api_key=_env("API_KEY", required=True),
+        admin_api_key=_env("ADMIN_API_KEY"),
         customer_email=_env("CUSTOMER_EMAIL", "customer@example.com"),
         customer_password=_env("CUSTOMER_PASSWORD", "password123"),
         db_dsn=_env("DB_DSN"),

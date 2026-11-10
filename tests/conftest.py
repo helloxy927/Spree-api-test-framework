@@ -96,3 +96,13 @@ def guest_cart(api, settings):
     cart = GuestCart.create(api, settings)
     yield cart
     cart.destroy()
+
+
+@pytest.fixture()
+def order(auth_api, factory, product_variant) -> dict:
+    """造一张已完成订单；需要中间状态的用例自己用 Checkout 走流程。"""
+    from tests.helpers import Checkout
+
+    checkout = Checkout(customer=auth_api, email=factory.email("buyer"))
+    body = checkout.place_order(product_variant["variant"]["id"], 1)
+    return {"body": body, "checkout": checkout}
