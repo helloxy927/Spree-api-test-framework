@@ -1,0 +1,3 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","42","test_missing_api_key_returns_401","tests","2026-11-10","passed","2026-11-10","","test_00_smoke","",""
+"","255","test_products_returns_list","tests","2026-11-10","passed","2026-11-10","","test_00_smoke","",""
