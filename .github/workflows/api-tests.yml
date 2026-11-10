@@ -1,4 +1,4 @@
-﻿name: api-tests
+name: api-tests
 
 on:
   schedule:
@@ -58,16 +58,22 @@ jobs:
 
       - name: 检查运行环境
         run: |
+          set -x
           which python
           python --version
           python -m pip --version
           node --version
+          npm --version
 
       - name: 安装依赖
-        run: python -m pip install -r requirements.txt
+        run: |
+          set -o pipefail
+          python -m pip install -r requirements.txt 2>&1 | tee pip-install.log
 
       - name: 安装 Allure CLI
-        run: npm install -g allure-commandline
+        run: |
+          set -o pipefail
+          npm install -g allure-commandline 2>&1 | tee npm-install.log
 
       - name: 运行接口测试
         env:
