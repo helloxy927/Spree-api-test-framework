@@ -1,0 +1,23 @@
+HTTP 200   耗时 30 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "date": "Tue, 10 Nov 2026 13:00:11 GMT",
+  "etag": "\"4609d9838c5ce28c984085a79cf447ef\"",
+  "content-type": "application/json; charset=utf-8",
+  "vary": "Accept, X-Spree-Api-Key, Authorization, X-Spree-Country, X-Spree-Currency, X-Spree-Locale, X-Spree-Channel",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9750",
+  "x-request-id": "4918bc9a-1c22-4eb4-9998-ee16f361f649",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "cache-control": "max-age=300, public, stale-while-revalidate=30",
+  "x-runtime": "0.027983",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "111"
+}
+--- body ---
+{"data":[],"meta":{"page":1,"limit":25,"count":0,"pages":1,"from":0,"to":0,"in":0,"previous":null,"next":null}}

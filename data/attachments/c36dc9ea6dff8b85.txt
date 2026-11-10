@@ -1,0 +1,18 @@
+PATCH http://localhost:3000/api/v3/store/carts/cart_gqWHJdmfrX
+--- headers ---
+{
+  "User-Agent": "spree-api-test-framework/1.0",
+  "Accept-Encoding": "gzip, deflate, zstd",
+  "Accept": "application/json",
+  "Connection": "keep-alive",
+  "Content-Type": "application/json",
+  "X-Spree-Api-Key": "pk_rJG***F4",
+  "Authorization": "Bearer***Gw",
+  "X-Spree-Token": "VN9GJ3***y5"
+}
+--- body ---
+{
+  "email": "qa_42820374152_buyer_751d6c@example.test",
+  "ship_address_id": "addr_M7wnyloHRU",
+  "bill_address_id": "addr_M7wnyloHRU"
+}

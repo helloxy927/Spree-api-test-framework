@@ -1,0 +1,10 @@
+curl -X POST 'http://localhost:3000/api/v3/store/carts/cart_eMy6l8wVqS/items' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'X-Spree-Api-Key: pk_rJG***F4' \
+  -H 'Authorization: Bearer***Gw' \
+  -H 'X-Spree-Token: 2fzqP4***qy' \
+  --data '{
+  "variant_id": "variant_gbHJdmfrXB",
+  "quantity": 1
+}'

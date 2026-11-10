@@ -1,0 +1,6 @@
+curl -X DELETE 'http://localhost:3000/api/v3/store/carts/cart_VW7XmZF31w' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'X-Spree-Api-Key: pk_rJG***F4' \
+  -H 'Authorization: Bearer***Gw' \
+  -H 'X-Spree-Token: U4agtW***X8'

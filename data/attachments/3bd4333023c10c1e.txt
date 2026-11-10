@@ -1,0 +1,20 @@
+HTTP 422   耗时 197 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9993",
+  "x-request-id": "3cbb6e17-925d-49be-8ab6-e2fa40bc6ba4",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "cache-control": "no-cache",
+  "x-runtime": "0.194243",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "152"
+}
+--- body ---
+{"error":{"code":"validation_error","message":"Password confirmation与Password不匹配","details":{"password_confirmation":["与Password不匹配"]}}}

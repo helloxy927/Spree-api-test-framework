@@ -1,0 +1,20 @@
+HTTP 401   耗时 24 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9996",
+  "x-request-id": "3ead4d9f-0eca-4866-9870-c4a8426f8b0a",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "cache-control": "no-cache",
+  "x-runtime": "0.021263",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "80"
+}
+--- body ---
+{"error":{"code":"authentication_failed","message":"Invalid email or password"}}

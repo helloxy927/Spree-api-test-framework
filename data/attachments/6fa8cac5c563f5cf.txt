@@ -1,0 +1,21 @@
+HTTP 200   耗时 76 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9816",
+  "x-request-id": "bccd1df6-e7d0-451b-9720-abb4bdadb2cb",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "etag": "W/\"deca599a5b1d9befcaf8f6df960d157b\"",
+  "cache-control": "max-age=0, private, must-revalidate",
+  "x-runtime": "0.073823",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "2069"
+}
+--- body ---
+{"id":"cart_95VFqgRua4","market_id":"mkt_UkLWZg9DAJ","channel_id":"ch_UkLWZg9DAJ","preferred_stock_location_id":null,"company_id":null,"company_name":null,"po_number_required":false,"po_document_filename":null,"po_document_byte_size":null,"number":"cart_95VFqgRua4","token":"r8zg5qxybDMu5vuq1roh3nWu","email":null,"customer_note":"qa:42820374152","po_number":null,"currency":"CNY","locale":"zh-CN","total_quantity":0,"warnings":[],"coupon_code":null,"item_total":"0.00","display_item_total":"¥0.00","discount_total":"0.00","display_discount_total":"¥0.00","tax_total":"0.00","display_tax_total":"¥0.00","included_tax_total":"0.00","display_included_tax_total":"¥0.00","additional_tax_total":"0.00","display_additional_tax_total":"¥0.00","delivery_total":"0.00","display_delivery_total":"¥0.00","fee_total":"0.00","display_fee_total":"¥0.00","gift_card_total":"0.00","display_gift_card_total":"¥0.00","store_credit_total":"0.00","display_store_credit_total":"¥0.00","total":"0.00","display_total":"¥0.00","amount_due":"0.00","display_amount_due":"¥0.00","covered_by_store_credit":false,"payments":[],"adjustment_total":"0.00","display_adjustment_total":"¥0.00","current_step":"address","completed_steps":[],"requirements":[{"code":"line_items_required","step":"cart","field":"line_items","message":"请至少向购物车中添加一件商品"},{"code":"email_required","step":"address","field":"email","message":"需要填写电子邮箱地址"}],"order_minimum":null,"order_minimum_shortfall":null,"below_order_minimum":false,"freight_summary":null,"shipping_eq_billing_address":false,"discounts":[],"fees":[],"items":[],"fulfillments":[],"billing_address":null,"shipping_address":null,"payment_methods":[{"id":"pm_EfhxLZ9ck8","name":"Check","description":"Pay by check.","type":"check","session_required":false,"source_required":false}],"gift_card":null,"market":{"id":"mkt_UkLWZg9DAJ","name":"China","currency":"CNY","default_locale":"zh-CN","tax_inclusive":false,"default":true,"country_codes":["CN"],"country_isos":["CN"],"supported_locales":["zh-CN"]}}

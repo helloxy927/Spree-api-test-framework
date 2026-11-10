@@ -1,0 +1,11 @@
+curl -X PATCH 'http://localhost:3000/api/v3/store/carts/cart_95VFqgRua4' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'X-Spree-Api-Key: pk_rJG***F4' \
+  -H 'Authorization: Bearer***Gw' \
+  -H 'X-Spree-Token: r8zg5q***Wu' \
+  --data '{
+  "email": "qa_42820374152_pay_52c62c@example.test",
+  "ship_address_id": "addr_M7wnyloHRU",
+  "bill_address_id": "addr_M7wnyloHRU"
+}'

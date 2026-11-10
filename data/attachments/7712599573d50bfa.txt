@@ -1,0 +1,17 @@
+HTTP 401   耗时 3 ms
+--- headers ---
+{
+  "x-frame-options": "SAMEORIGIN",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "no-cache",
+  "x-request-id": "8e5ed63d-fe14-4b82-850d-9473bcb12a07",
+  "x-runtime": "0.001359",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "80"
+}
+--- body ---
+{"error":{"code":"authentication_required","message":"Authentication required"}}

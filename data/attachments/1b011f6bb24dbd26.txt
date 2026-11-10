@@ -1,0 +1,21 @@
+HTTP 201   耗时 216 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9861",
+  "x-request-id": "a5c63948-17eb-432f-b6b1-a13e2c474ace",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "etag": "W/\"6304f36c23e502e4b68899652d6deec8\"",
+  "cache-control": "max-age=0, private, must-revalidate",
+  "x-runtime": "0.213989",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "762"
+}
+--- body ---
+{"token":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0NiwidXNlcl90eXBlIjoiY3VzdG9tZXIiLCJqdGkiOiI3NmRhYmQ1Yi03NjRkLTQ4NmEtYjQwYi1iYmMzYjM4MWJiNzMiLCJpc3MiOiJzcHJlZSIsImF1ZCI6InN0b3JlX2FwaSIsImV4cCI6MTc5NDMxOTE5NX0.5qXoF_10O4HSIeFJs8QGcDCxD8zTuA1wnsTPzLo2i1M","refresh_token":"6F4FD1bpXs1CSqYPsVDpdTo7","user":{"id":"cust_k2KT9MVfb0","email":"qa_42820374152_other_92d8cd@example.test","first_name":"Other","last_name":"User","phone":null,"accepts_email_marketing":false,"email_marketing_consent_updated_at":"2026-11-10T12:59:55Z","full_name":"Other User","available_store_credit_total":"0.00","display_available_store_credit_total":"¥0.00","addresses":[],"default_billing_address":null,"default_shipping_address":null,"newsletter_subscriber":null,"customer_groups":[]}}
