@@ -1,4 +1,4 @@
-# 自托管 Runner（Windows + Git Bash）
+﻿# 自托管 Runner（Windows + Git Bash）
 name: api-tests
 
 on:
@@ -91,11 +91,23 @@ jobs:
           DB_DSN: ${{ secrets.DB_DSN }}
           RUN_ID: ${{ github.run_id }}
         run: |
-          MARKER="${{ github.event.inputs.marker || 'smoke' }}"
-          if [ -z "$MARKER" ]; then
-            python -m pytest --alluredir=allure-results
+          EVENT="${{ github.event_name }}"
+          INPUT="${{ github.event.inputs.marker }}"
+          if [ "$EVENT" = "schedule" ]; then
+            # 每天定时跑全量 60 条
+            MARKER=""
+          elif [ -n "$INPUT" ]; then
+            MARKER="$INPUT"
           else
-            python -m pytest -m "$MARKER" --alluredir=allure-results
+            # push 只跑冒烟，快速反馈
+            MARKER=""
+          fi
+
+          echo "event=$EVENT marker=${MARKER:-<全量>}"
+          if [ -z "$MARKER" ]; then
+            python -m pytest --alluredir=allure-results --clean-alluredir
+          else
+            python -m pytest -m "$MARKER" --alluredir=allure-results --clean-alluredir
           fi
 
       - name: 生成 Allure 报告
