@@ -1,4 +1,4 @@
-﻿# 自托管 Runner（Windows + Git Bash）
+# 自托管 Runner（Windows + Git Bash）
 name: api-tests
 
 on:
@@ -71,10 +71,16 @@ jobs:
           set -o pipefail
           python -m pip install -r requirements.txt 2>&1 | tee pip-install.log
 
+      # 机器上已经有 allure 就不重复装：
+      # 重复 npm install 会去替换正在被占用的 jar，报 EBUSY（本地开着 allure serve 时必现）
       - name: 安装 Allure CLI
         run: |
           set -o pipefail
-          npm install -g allure-commandline 2>&1 | tee npm-install.log
+          if command -v allure >/dev/null 2>&1; then
+            echo "allure 已存在：$(allure --version)，跳过安装"
+          else
+            npm install -g allure-commandline 2>&1 | tee npm-install.log
+          fi
 
       - name: 运行接口测试
         env:
