@@ -73,3 +73,26 @@ def factory(settings, request) -> DataFactory:
         print("\n[清理失败] 以下记录需要人工确认：")
         for problem in problems:
             print(f"  - {problem}")
+
+
+STORE = "/api/v3/store"
+
+
+@pytest.fixture(scope="session")
+def product_variant(api) -> dict:
+    """取一个有库存的商品及其首个 variant，供购物车/订单用例复用。"""
+    product = api.get(f"{STORE}/products", params={"per_page": 1}).json()["data"][0]
+    detail = api.get(
+        f"{STORE}/products/{product['slug']}", params={"expand": "variants"}
+    ).json()
+    return {"product": product, "variant": detail["variants"][0]}
+
+
+@pytest.fixture()
+def guest_cart(api, settings):
+    """每个用例一个全新游客购物车，用例结束自动删掉，互不影响。"""
+    from tests.helpers import GuestCart
+
+    cart = GuestCart.create(api, settings)
+    yield cart
+    cart.destroy()
