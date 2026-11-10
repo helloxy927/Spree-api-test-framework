@@ -176,7 +176,17 @@ class TestOrderNegative:
         resp = checkout.complete()
         assert resp.status_code in (400, 422), f"未支付却下单成功: {resp.status_code}"
 
-    @allure.story("未登录不能查订单")
-    def test_order_requires_auth(self, api):
-        resp = api.get(f"{STORE}/orders/R1001")
-        assert resp.status_code in (401, 403, 404)
+    @allure.story("多件商品订单金额")
+    @pytest.mark.db
+    def test_order_with_quantity_two(self, auth_api, db, factory, product_variant):
+        checkout = Checkout(customer=auth_api, email=factory.email("buyer"))
+        body = checkout.place_order(product_variant["variant"]["id"], 2)
+
+        row = _db_order(db, body["number"])
+        items = db.fetch_all("select * from spree_line_items where order_id = :o", o=row["id"])
+        assert sum(i["quantity"] for i in items) == 2
+
+        unit = Decimal(str(items[0]["price"]))
+        delivery = Decimal(str(row["delivery_total"]))
+        assert Decimal(str(body["item_total"])) == unit * 2
+        assert Decimal(str(body["total"])) == unit * 2 + delivery

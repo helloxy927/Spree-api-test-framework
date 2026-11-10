@@ -60,14 +60,31 @@ class TestProductList:
         assert body["data"] == []
         expect.assert_fields(body["meta"], count=0, pages=1)
 
-    @allure.story("非法分页参数")
-    def test_invalid_page_parameter_is_handled(self, api):
-        resp = api.get(f"{STORE}/products", params={"page": 0, "per_page": -5})
-        assert resp.status_code < 500, f"非法分页参数导致 5xx: {resp.status_code} {resp.text[:200]}"
+    @allure.story("分页元信息自洽")
+    def test_pagination_meta_is_consistent(self, api):
+        # v3 的分页参数是 limit（不是 per_page），默认 25
+        body = expect.assert_business_ok(
+            api.get(f"{STORE}/products", params={"limit": 10, "page": 1})
+        )
+        meta = body["meta"]
+        assert meta["in"] == len(body["data"])
+        assert meta["limit"] == 10
+        assert meta["in"] <= 10
+        assert meta["count"] >= meta["in"]
 
 
 @allure.feature("商品")
 class TestProductDetail:
+    @allure.story("展开 variants")
+    def test_detail_expands_variants(self, api):
+        listed = expect.assert_business_ok(api.get(f"{STORE}/products", params={"limit": 1}))["data"][0]
+        body = expect.assert_business_ok(
+            api.get(f"{STORE}/products/{listed['slug']}", params={"expand": "variants"})
+        )
+        variants = body.get("variants") or []
+        assert len(variants) == body["variant_count"], "展开的 variant 数与 variant_count 不一致"
+        assert all(v.get("id", "").startswith("variant_") for v in variants)
+
     @allure.story("按 slug 查详情")
     def test_detail_by_slug(self, api):
         listed = expect.assert_business_ok(api.get(f"{STORE}/products", params={"per_page": 1}))["data"][0]

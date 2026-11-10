@@ -81,7 +81,7 @@ STORE = "/api/v3/store"
 @pytest.fixture(scope="session")
 def product_variant(api) -> dict:
     """取一个有库存的商品及其首个 variant，供购物车/订单用例复用。"""
-    product = api.get(f"{STORE}/products", params={"per_page": 1}).json()["data"][0]
+    product = api.get(f"{STORE}/products", params={"limit": 1}).json()["data"][0]
     detail = api.get(
         f"{STORE}/products/{product['slug']}", params={"expand": "variants"}
     ).json()

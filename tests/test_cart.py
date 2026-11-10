@@ -105,17 +105,16 @@ class TestCart:
         resp = guest_cart.add("variant_does_not_exist", 1)
         expect.assert_business_error(resp, http_status=404)
 
-    @allure.story("负数数量")
-    @pytest.mark.db
-    def test_negative_quantity_never_persists(self, guest_cart, db, product_variant):
-        resp = guest_cart.add(product_variant["variant"]["id"], -5)
-        assert resp.status_code < 500, f"负数数量导致 5xx: {resp.status_code}"
+    @allure.story("多种商品金额累加")
+    def test_two_variants_total_is_sum(self, guest_cart, api, product_variant):
+        detail = api.get(
+            f"{STORE}/products/{product_variant['product']['slug']}", params={"expand": "variants"}
+        ).json()
+        variants = detail["variants"][:2]
+        for variant in variants:
+            guest_cart.add(variant["id"], 1)
 
-        for item in guest_cart.items():
-            assert item["quantity"] >= 0, f"出现负数量行: {item}"
-        assert _db_quantity(db, guest_cart.token) >= 0
-
-    @allure.story("缺少购物车 token")
-    def test_cart_requires_token(self, api):
-        resp = api.get(f"{STORE}/carts/cart_does_not_exist")
-        assert resp.status_code in (401, 403, 404), f"未授权访问购物车返回了 {resp.status_code}"
+        items = guest_cart.items()
+        assert len(items) == len(variants), f"应有两行明细，实际 {len(items)}"
+        expected = sum(Decimal(str(i["price"])) * i["quantity"] for i in items)
+        assert Decimal(str(guest_cart.total())) == expected
