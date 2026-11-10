@@ -10,3 +10,6 @@ allure-report/
 logs/
 .idea/
 .vscode/
+
+# 被测系统 Spree 源码，单独存放，不进测试框架仓库
+my-store/

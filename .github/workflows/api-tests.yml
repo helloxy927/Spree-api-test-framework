@@ -41,12 +41,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: 安装 Allure CLI
-        run: |
-          curl -sSL -o /tmp/allure.tgz \
-            https://github.com/allure-framework/allure2/releases/download/2.32.0/allure-2.32.0.tgz
-          mkdir -p "$HOME/allure"
-          tar -xzf /tmp/allure.tgz -C "$HOME/allure" --strip-components=1
-          echo "$HOME/allure/bin" >> "$GITHUB_PATH"
+        run: npm install -g allure-commandline
 
       - name: 运行接口测试
         env:

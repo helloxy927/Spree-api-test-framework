@@ -41,6 +41,17 @@ allure serve allure-results
 
 被测系统（Spree）怎么起、`pk_` key 怎么拿、数据库端口怎么暴露，全部写在 **[docs/sut-setup.md](docs/sut-setup.md)**。
 
+> **第一次用 Allure 要先装 CLI**（它和 `allure-pytest` 是两回事：前者生成报告，后者产出结果）：
+>
+> ```powershell
+> # Windows PowerShell 默认禁止运行 .ps1，不改策略会报「禁止运行脚本」
+> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+> npm install -g allure-commandline
+> allure --version
+> ```
+>
+> 不想改执行策略，就把命令写成 `allure.cmd serve allure-results`。
+
 ---
 
 ## 3. 环境变量
@@ -137,3 +148,4 @@ Spree-api-test-framework/
 | 登录失败 401 | 账号不存在 | 先注册顾客，见 docs/sut-setup.md 第 3 节 |
 | DB `password authentication failed` | DSN 账号密码不对 | 看 Spree 项目的 `.env` 或 compose 文件 |
 | 报告里没有请求报文 | 没加 `--alluredir` | 命令里带上 `--alluredir=allure-results` |
+| `allure : 无法加载文件 ... 禁止运行脚本` | PowerShell 执行策略禁止 `.ps1` | `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`，或改用 `allure.cmd` |
