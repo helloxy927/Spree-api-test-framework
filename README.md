@@ -40,6 +40,9 @@ pytest -m smoke
 # 5) 出报告
 pytest --alluredir=allure-results
 allure serve allure-results
+
+# 6) 清理测试数据（跑完必做，否则订单/购物车会一直累积）
+python scripts/cleanup_test_data.py --yes
 ```
 
 被测系统（Spree）怎么起、`pk_` key 怎么拿、数据库端口怎么暴露，全部写在 **[docs/sut-setup.md](docs/sut-setup.md)**。
@@ -90,6 +93,17 @@ pytest --alluredir=allure-results
 allure generate allure-results -o allure-report --clean
 allure open allure-report
 ```
+
+数据清理（**每次跑完都要执行**）：
+
+```powershell
+python scripts/cleanup_test_data.py          # 只看统计，不删
+python scripts/cleanup_test_data.py --yes    # 删除本次运行产生的数据
+python scripts/cleanup_test_data.py --all --yes   # 连历史遗留一起清空（重装环境时用）
+```
+
+清理依据是 `customer_note = qa:<RUN_ID>` 标记：用例建购物车时写入，订单会继承，
+所以只删测试数据，不碰真实业务数据。清理后 `订单/购物车/支付/明细/地址` 全部归零。
 
 ---
 

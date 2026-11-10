@@ -10,6 +10,7 @@ from dataclasses import dataclass, field
 import requests
 
 from framework.client import ApiClient
+from framework.config import get_settings
 
 STORE = "/api/v3/store"
 
@@ -28,6 +29,11 @@ class GuestCart:
         body = resp.json()
         client = ApiClient(settings)
         client.session.headers["X-Spree-Token"] = body["token"]
+        # 打运行标记，清理脚本按 qa: 前缀删除
+        client.patch(
+            f"{STORE}/carts/{body['id']}",
+            json={"customer_note": f"qa:{get_settings().run_id}"},
+        )
         return cls(client=client, id=body["id"], token=body["token"], raw=body)
 
     # ---------------- 业务动作 ----------------
@@ -82,6 +88,13 @@ class Checkout:
         self.headers = {"X-Spree-Token": self.token}
         self.address_id: str | None = None
         self.last_payment_method_id: str | None = None
+        # 打上运行标记：订单会继承购物车的 customer_note，清理脚本按 qa: 前缀精确删除
+        self.run_id = get_settings().run_id
+        self.customer.patch(
+            f"{STORE}/carts/{self.id}",
+            json={"customer_note": f"qa:{self.run_id}"},
+            headers=self.headers,
+        )
 
     # ---------------- 步骤 ----------------
     def add_item(self, variant_id: str, quantity: int = 1):
@@ -101,6 +114,7 @@ class Checkout:
             "phone": "13800000000",
             "country_iso": "CN",
             "state_name": "Shanghai",
+            "label": f"qa:{self.run_id}",
             **overrides,
         }
         resp = self.customer.post(f"{STORE}/customers/me/addresses", json=payload)

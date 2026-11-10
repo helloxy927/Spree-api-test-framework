@@ -151,11 +151,12 @@ class TestOrderNegative:
     @allure.story("空车不能下单")
     def test_empty_cart_cannot_complete(self, auth_api):
         cart = auth_api.post(f"{STORE}/carts").json()
-        resp = auth_api.post(
-            f"{STORE}/carts/{cart['id']}/complete",
-            headers={"X-Spree-Token": cart["token"]},
-        )
-        assert resp.status_code in (400, 422), f"空车下单返回了 {resp.status_code}"
+        headers = {"X-Spree-Token": cart["token"]}
+        try:
+            resp = auth_api.post(f"{STORE}/carts/{cart['id']}/complete", headers=headers)
+            assert resp.status_code in (400, 422), f"空车下单返回了 {resp.status_code}"
+        finally:
+            auth_api.delete(f"{STORE}/carts/{cart['id']}", headers=headers)
 
     @allure.story("重复调用 complete 不产生第二张单")
     @pytest.mark.db

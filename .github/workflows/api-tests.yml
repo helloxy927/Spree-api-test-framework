@@ -66,6 +66,15 @@ jobs:
         if: always()
         run: allure generate allure-results -o allure-report --clean
 
+      - name: 清理测试数据
+        if: always()
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          API_KEY: ${{ secrets.API_KEY }}
+          DB_DSN: ${{ secrets.DB_DSN }}
+          RUN_ID: ${{ github.run_id }}
+        run: python scripts/cleanup_test_data.py --yes
+
       - name: 上传报告与日志
         if: always()
         uses: actions/upload-artifact@v4
