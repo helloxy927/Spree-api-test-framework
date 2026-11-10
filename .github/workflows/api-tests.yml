@@ -1,4 +1,4 @@
-name: api-tests
+﻿name: api-tests
 
 on:
   schedule:
@@ -39,6 +39,9 @@ jobs:
       # Windows 默认 GBK，中文断言信息会炸，强制 UTF-8
       PYTHONIOENCODING: utf-8
       PYTHONUTF8: "1"
+      # 国内直连 PyPI / npm 官方源经常超时，走镜像（海外环境删掉这两行即可）
+      PIP_INDEX_URL: https://pypi.tuna.tsinghua.edu.cn/simple
+      NPM_CONFIG_REGISTRY: https://registry.npmmirror.com
 
     steps:
       - uses: actions/checkout@v4
@@ -61,7 +64,7 @@ jobs:
           node --version
 
       - name: 安装依赖
-        run: python -m pip install -q -r requirements.txt
+        run: python -m pip install -r requirements.txt
 
       - name: 安装 Allure CLI
         run: npm install -g allure-commandline
