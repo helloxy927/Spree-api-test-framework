@@ -44,9 +44,18 @@ jobs:
       - uses: actions/checkout@v4
 
       # 不用 actions/setup-python：它要从 GitHub 下载 Python 发行包，本机直连会被墙。
-      # 这台机器（也就是 SUT 所在机器）已经装了 Python 3.12。
+      # 这台机器（也就是 SUT 所在机器）已经装了 Python 3.12 / Node 24，直接把目录写进 PATH，
+      # 避免 runner 环境里 `python` 命中 Windows Store 的占位程序。
+      - name: 配置运行环境
+        run: |
+          echo "D:/devSoftware/Python312" >> "$GITHUB_PATH"
+          echo "D:/devSoftware/Python312/Scripts" >> "$GITHUB_PATH"
+          echo "D:/devSoftware/nodejs" >> "$GITHUB_PATH"
+          echo "PATH 已追加，下一步开始可用"
+
       - name: 检查运行环境
         run: |
+          which python
           python --version
           python -m pip --version
           node --version
