@@ -27,6 +27,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    # 发布报告到 gh-pages 需要写权限，否则 peaceiris 那步会 403
+    permissions:
+      contents: write
 
     steps:
       - uses: actions/checkout@v4
