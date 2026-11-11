@@ -1,4 +1,4 @@
-﻿# CI 依赖本机 Docker + Spree + 自托管 Runner，开机顺序见 README 7.1
+# CI 依赖本机 Docker + Spree + 自托管 Runner，开机顺序见 README 7.1
 # 自托管 Runner（Windows + Git Bash）
 name: api-tests
 
@@ -82,6 +82,25 @@ jobs:
           else
             npm install -g allure-commandline 2>&1 | tee npm-install.log
           fi
+
+      # 开机后 Docker/Spree 可能还在启动，先等接口真正可用，避免「环境类」假失败
+      - name: 等待被测系统就绪
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          for i in $(seq 1 60); do
+            code=$(curl -s -o /dev/null -w "%{http_code}" \
+              -H "X-Spree-Api-Key: ${API_KEY}" \
+              "${BASE_URL}/api/v3/store/products" || true)
+            if [ "$code" = "200" ] || [ "$code" = "401" ]; then
+              echo "SUT 就绪（HTTP $code，等待 $((i*2)) 秒）"
+              exit 0
+            fi
+            sleep 2
+          done
+          echo "SUT 在 120 秒内未就绪，最后状态码: $code"
+          exit 1
 
       - name: 运行接口测试
         env:
