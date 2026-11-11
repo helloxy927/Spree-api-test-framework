@@ -146,13 +146,33 @@ Spree-api-test-framework/
 
 ## 7. 持续集成
 
-- 定时：每天 UTC 18:00（北京时间 02:00）跑冒烟，见 `.github/workflows/api-tests.yml`
-- 手动：Actions → api-tests → Run workflow，可指定 marker 跑全量
+- 定时：每天 UTC 18:00（北京时间 02:00）跑**全量 60 条**
+- push 到 main：只跑**冒烟 2 条**，快速反馈
+- 手动：Actions → api-tests → Run workflow，可指定 marker
 - 报告：artifact 保留 30 天，同时发布到 `gh-pages` 分支
 
 **必须在仓库 Settings → Secrets 里配**：`BASE_URL`、`API_KEY`、`CUSTOMER_EMAIL`、`CUSTOMER_PASSWORD`、`DB_DSN`。
 
-> ⚠️ GitHub 托管 Runner **访问不到你本机的 localhost**。三种解法见 docs/sut-setup.md 第 4 节：自托管 Runner（最省事）、CI 里 docker compose 起 SUT、或把 SUT 部署到公网。
+> ⚠️ GitHub 托管 Runner **访问不到你本机的 localhost**，所以本项目使用**自托管 Runner**（跑在部署 Spree 的那台机器上）。
+
+### 7.1 自托管 Runner 的开机顺序（很容易踩）
+
+定时任务失败最常见的两个原因，都不是用例问题：
+
+| 现象 | 原因 | 处理 |
+|---|---|---|
+| `ConnectionRefused localhost:3000` | 重启后 Docker / Spree 没起 | 先起 Docker Desktop，再 `docker compose up -d` |
+| `ConnectionRefused 127.0.0.1:7897` | Runner 配了代理，但代理没启动 | 代理可选：脚本里检测端口，没开就直连 |
+
+开机自启脚本（放在启动文件夹）：
+
+```
+D:\actions-runner\start-stack.cmd    # Docker → Spree → 等 3000 端口 → Runner
+D:\actions-runner\start-runner.cmd   # 只起 Runner（代理可选、Git Bash 优先）
+```
+
+> 为什么强调 Git Bash：Windows 的 `bash` 默认解析到 `C:\WINDOWS\system32\bash.exe`（WSL 启动器），
+> 会让每个 `shell: bash` 步骤 1 秒内失败。脚本里把 `C:\Program Files\Git\bin` 放在 PATH 最前面。
 
 ---
 
