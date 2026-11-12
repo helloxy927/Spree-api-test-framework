@@ -1,0 +1,8 @@
+curl -X PATCH 'http://localhost:3000/api/v3/store/customers/me' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'X-Spree-Api-Key: pk_rJG***F4' \
+  -H 'Authorization: Bearer***Hg' \
+  --data '{
+  "first_name": "QA"
+}'

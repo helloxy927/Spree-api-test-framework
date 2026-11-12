@@ -1,0 +1,8 @@
+curl -X PATCH 'http://localhost:3000/api/v3/store/carts/cart_RZCeNhrwyV' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'X-Spree-Api-Key: pk_rJG***F4' \
+  -H 'X-Spree-Token: UfnJzQ***tu' \
+  --data '{
+  "customer_note": "qa:43127427692"
+}'

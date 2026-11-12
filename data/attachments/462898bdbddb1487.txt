@@ -1,0 +1,23 @@
+HTTP 200   耗时 85 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "date": "Thu, 12 Nov 2026 00:40:48 GMT",
+  "etag": "\"69307397aa7a81e10a5d97fea7e5667a\"",
+  "content-type": "application/json; charset=utf-8",
+  "vary": "Accept, X-Spree-Api-Key, Authorization, X-Spree-Country, X-Spree-Currency, X-Spree-Locale, X-Spree-Channel",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9750",
+  "x-request-id": "97a4140d-9146-44d4-8a09-ee13d27677a3",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "cache-control": "max-age=300, public, stale-while-revalidate=30",
+  "x-runtime": "0.081923",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "3509"
+}
+--- body ---
+{"data":[{"id":"prod_UkLWZg9DAJ","name":"Automatic Espresso Machine","slug":"automatic-espresso-machine","meta_title":"Automatic Espresso Machine | Spree Commerce Demo","meta_description":"Shop the Automatic Espresso Machine on the Spree Commerce demo store. Bean-to-cup coffee with 15-bar pressure & ceramic grinder. Spree ecommerce in action.","meta_keywords":"automatic espresso machine, bean-to-cup coffee machine, home espresso machine, spree commerce, spree demo store, ecommerce platform demo","variant_count":3,"available_on":"2026-11-10T10:16:04.750Z","preorder_ships_at":null,"purchasable":true,"preorder":false,"in_stock":true,"backorderable":false,"available":true,"description":"Fully automatic bean-to-cup espresso machine with ceramic grinder, 15-bar pressure system, and intuitive touch display. Delivers barista-quality espresso, cappuccino, and latte at the touch of a button.","description_html":"Fully automatic bean-to-cup espresso machine with ceramic grinder, 15-bar pressure system, and intuitive touch display. Delivers barista-quality espresso, cappuccino, and latte at the touch of a button.","default_variant_id":"variant_gbHJdmfrXB","buy_box_variant_id":"variant_gbHJdmfrXB","thumbnail_url":"http://localhost:3000/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MiwicHVyIjoiYmxvYl9pZCJ9fQ==--cf181695abafc9288e15511f29e443ec11c5ba5d/automatic-espresso-machine.webp","tags":["coffee","espresso","kitchen","coffee machines","bean-to-cup","automatic"],"price":{"id":"price_kRjKT9MVfb","currency":"CNY","amount":"879.99","compare_at_amount":null,"amount_in_cents":87999,"compare_at_amount_in_cents":null,"display_amount":"¥879.99","display_compare_at_amount":null,"price_list_id":null},"original_price":null,"seller_id":null},{"id":"prod_gbHJdmfrXB","name":"Semi-Automatic Espresso Machine","slug":"semi-automatic-espresso-machine","meta_title":"Semi-Automatic Espresso Machine | Spree Commerce Demo","meta_description":"Browse the Semi-Automatic Espresso Machine on the Spree Commerce demo store. 58mm portafilter, PID temperature control & steam wand. Powered by Spree.","meta_keywords":"semi-automatic espresso machine, espresso machine, home barista, PID espresso machine, spree commerce demo, ecommerce example","variant_count":2,"available_on":"2026-11-10T10:16:04.750Z","preorder_ships_at":null,"purchasable":true,"preorder":false,"in_stock":true,"backorderable":false,"available":true,"description":"Professional-grade semi-automatic espresso machine with 58mm portafilter, PID temperature control, and steam wand for manual milk frothing.","description_html":"Professional-grade semi-automatic espresso machine with 58mm portafilter, PID temperature control, and steam wand for manual milk frothing.","default_variant_id":"variant_OIJLhNcSbf","buy_box_variant_id":"variant_OIJLhNcSbf","thumbnail_url":"http://localhost:3000/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MTMsInB1ciI6ImJsb2JfaWQifX0=--8a4386930dbc0f2d30b87a1ddb831c27b7afb386/semi-automatic-espresso-machine-stainless-steel.webp","tags":["coffee","espresso","kitchen","coffee machines","semi-automatic","barista"],"price":{"id":"price_3OjWpPTcf5","currency":"CNY","amount":"549.99","compare_at_amount":null,"amount_in_cents":54999,"compare_at_amount_in_cents":null,"display_amount":"¥549.99","display_compare_at_amount":null,"price_list_id":null},"original_price":null,"seller_id":null}],"meta":{"page":1,"limit":25,"count":2,"pages":1,"from":1,"to":2,"in":2,"previous":null,"next":null}}

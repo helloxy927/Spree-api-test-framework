@@ -1,0 +1,7 @@
+curl -X POST 'http://localhost:3000/api/v3/store/carts/cart_tx3yJwvFCu/payments' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'X-Spree-Api-Key: pk_rJG***F4' \
+  -H 'Authorization: Bearer***Hg' \
+  -H 'X-Spree-Token: rGG2mH***Ya' \
+  --data '{}'

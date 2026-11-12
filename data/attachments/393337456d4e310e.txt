@@ -1,0 +1,21 @@
+HTTP 201   耗时 44 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9928",
+  "x-request-id": "f03909ca-9657-4414-8bd2-21ecd489de08",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "etag": "W/\"a99afebe70a63a16f6620a7d9356a9de\"",
+  "cache-control": "max-age=0, private, must-revalidate",
+  "x-runtime": "0.041888",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "374"
+}
+--- body ---
+{"id":"py_ymCr3EWPH8","payment_method_id":"pm_EfhxLZ9ck8","response_code":null,"number":"cart_DEZPsx31Wa-P1","status":"checkout","amount":"884.99","display_amount":"¥884.99","source_type":null,"source_id":null,"source":null,"payment_method":{"id":"pm_EfhxLZ9ck8","name":"Check","description":"Pay by check.","type":"check","session_required":false,"source_required":false}}

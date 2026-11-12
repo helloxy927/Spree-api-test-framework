@@ -1,0 +1,17 @@
+HTTP 404   耗时 19 ms
+--- headers ---
+{
+  "x-frame-options": "SAMEORIGIN",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "no-cache",
+  "x-request-id": "2bf63149-3184-44ba-831d-5c034d986f2d",
+  "x-runtime": "0.016986",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "64"
+}
+--- body ---
+{"error":{"code":"record_not_found","message":"未找到 Cart"}}

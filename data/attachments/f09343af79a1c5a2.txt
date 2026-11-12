@@ -1,0 +1,21 @@
+HTTP 200   耗时 33 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9736",
+  "x-request-id": "5be2ff39-27bf-49db-8b0f-3e13a8aaff86",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "etag": "W/\"cd112ae9169ec8adb193fdb6db406015\"",
+  "cache-control": "max-age=0, private, must-revalidate",
+  "x-runtime": "0.029587",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "1908"
+}
+--- body ---
+{"id":"cust_YHETxCGlb0","email":"customer@example.com","first_name":"QA","last_name":"Bot","phone":"13800000000","accepts_email_marketing":false,"email_marketing_consent_updated_at":"2026-11-10T10:15:03Z","full_name":"QA Bot","available_store_credit_total":"0.00","display_available_store_credit_total":"¥0.00","addresses":[{"id":"addr_EUkhxLZ9ck","label":null,"first_name":"QA","last_name":"Bot","full_name":"QA Bot","address1":"1 Test Road","address2":null,"postal_code":"200000","city":"Shanghai","phone":"13800000000","company":null,"country_name":"China","country_code":"CN","state_text":"SH","state_code":"SH","quick_checkout":false,"is_default_billing":true,"is_default_shipping":true,"state_abbr":"SH","country_iso":"CN","state_name":"Shanghai","owner":{"id":"cust_YHETxCGlb0","type":"customer","name":null}}],"default_billing_address":{"id":"addr_EUkhxLZ9ck","label":null,"first_name":"QA","last_name":"Bot","full_name":"QA Bot","address1":"1 Test Road","address2":null,"postal_code":"200000","city":"Shanghai","phone":"13800000000","company":null,"country_name":"China","country_code":"CN","state_text":"SH","state_code":"SH","quick_checkout":false,"is_default_billing":true,"is_default_shipping":true,"state_abbr":"SH","country_iso":"CN","state_name":"Shanghai","owner":{"id":"cust_YHETxCGlb0","type":"customer","name":null}},"default_shipping_address":{"id":"addr_EUkhxLZ9ck","label":null,"first_name":"QA","last_name":"Bot","full_name":"QA Bot","address1":"1 Test Road","address2":null,"postal_code":"200000","city":"Shanghai","phone":"13800000000","company":null,"country_name":"China","country_code":"CN","state_text":"SH","state_code":"SH","quick_checkout":false,"is_default_billing":true,"is_default_shipping":true,"state_abbr":"SH","country_iso":"CN","state_name":"Shanghai","owner":{"id":"cust_YHETxCGlb0","type":"customer","name":null}},"newsletter_subscriber":null,"customer_groups":[]}

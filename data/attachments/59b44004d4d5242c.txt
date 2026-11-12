@@ -1,0 +1,8 @@
+curl -X POST 'http://localhost:3000/api/v3/store/auth/login' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'X-Spree-Api-Key: pk_rJG***F4' \
+  --data '{
+  "email": "qa_43127427692_other_080db3@example.test",
+  "password": "Passw0rd!"
+}'
