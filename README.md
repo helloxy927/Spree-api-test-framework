@@ -146,7 +146,7 @@ Spree-api-test-framework/
 
 ## 7. 持续集成
 
-- 定时：每天 UTC 18:00（北京时间 02:00）跑**全量 60 条**
+- 定时：每天 UTC 06:10（北京时间 14:10）跑**全量 60 条**
 - push 到 main：只跑**冒烟 2 条**，快速反馈
 - 手动：Actions → api-tests → Run workflow，可指定 marker
 - 报告：artifact 保留 30 天，同时发布到 `gh-pages` 分支
