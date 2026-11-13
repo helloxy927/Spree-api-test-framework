@@ -1,0 +1,17 @@
+HTTP 404   耗时 23 ms
+--- headers ---
+{
+  "x-frame-options": "SAMEORIGIN",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "no-cache",
+  "x-request-id": "6b10d0f6-927e-4c6d-9c2c-f1589d592bc9",
+  "x-runtime": "0.020883",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "68"
+}
+--- body ---
+{"error":{"code":"variant_not_found","message":"未找到 Variant"}}

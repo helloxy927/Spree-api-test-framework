@@ -1,0 +1,21 @@
+HTTP 201   耗时 21 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9801",
+  "x-request-id": "f60656c3-5d7b-4db1-9168-290d8b4a93ba",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "etag": "W/\"f1712c770df5475e61619508a3e9c7ea\"",
+  "cache-control": "max-age=0, private, must-revalidate",
+  "x-runtime": "0.018045",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "492"
+}
+--- body ---
+{"id":"addr_x2UoCpeNMW","label":null,"first_name":"QA","last_name":"Bot","full_name":"QA Bot","address1":"1 Test Road","address2":null,"postal_code":"200000","city":"Shanghai","phone":"13800000000","company":null,"country_name":"China","country_code":"CN","state_text":"SH","state_code":"SH","quick_checkout":false,"is_default_billing":true,"is_default_shipping":true,"state_abbr":"SH","country_iso":"CN","state_name":"Shanghai","owner":{"id":"cust_YHETxCGlb0","type":"customer","name":null}}

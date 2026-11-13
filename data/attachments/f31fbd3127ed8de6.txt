@@ -1,0 +1,21 @@
+HTTP 201   耗时 287 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9994",
+  "x-request-id": "5f32890f-8d13-4694-a2ec-bb1c608df57c",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "etag": "W/\"e5c4a21155b5f3e22376d2617629d475\"",
+  "cache-control": "max-age=0, private, must-revalidate",
+  "x-runtime": "0.243706",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "757"
+}
+--- body ---
+{"token":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo1MSwidXNlcl90eXBlIjoiY3VzdG9tZXIiLCJqdGkiOiIxOGVjNDljNS1kNjhmLTQ1MmQtYjBjYi01NzBlNjRjZDc3ZWUiLCJpc3MiOiJzcHJlZSIsImF1ZCI6InN0b3JlX2FwaSIsImV4cCI6MTc5NDU4MzgxM30.V1wf0evxbFayKBToAhWtzdBm_KDxDE22-IIpyBkjYCM","refresh_token":"7UQsXzUMYZcRHpaYuXYy6ogR","user":{"id":"cust_hDBvQ85Ws9","email":"qa_43443084311_register_8da8b6@example.test","first_name":"QA","last_name":"Bot","phone":null,"accepts_email_marketing":false,"email_marketing_consent_updated_at":"2026-11-13T14:30:13Z","full_name":"QA Bot","available_store_credit_total":"0.00","display_available_store_credit_total":"¥0.00","addresses":[],"default_billing_address":null,"default_shipping_address":null,"newsletter_subscriber":null,"customer_groups":[]}}

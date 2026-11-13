@@ -1,0 +1,20 @@
+HTTP 422   耗时 211 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9993",
+  "x-request-id": "a51d7ebc-89b1-4d60-b5c2-1bef098a4d2d",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "cache-control": "no-cache",
+  "x-runtime": "0.208545",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "110"
+}
+--- body ---
+{"error":{"code":"validation_error","message":"Email已经被使用","details":{"email":["已经被使用"]}}}

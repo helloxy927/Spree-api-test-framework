@@ -1,0 +1,20 @@
+HTTP 422   耗时 60 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9840",
+  "x-request-id": "b9e0820f-883a-49d5-83b7-9139015d78f2",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "cache-control": "no-cache",
+  "x-runtime": "0.058520",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "198"
+}
+--- body ---
+{"error":{"code":"cart_cannot_complete","message":"{code: \"validation_failed\", errors: [{code: \"payment_required\", step: \"payment\", field: \"payment\", message: \"请添加支付方式\"}]}"}}

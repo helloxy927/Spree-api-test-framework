@@ -1,0 +1,23 @@
+POST http://localhost:3000/api/v3/store/customers/me/addresses
+--- headers ---
+{
+  "User-Agent": "spree-api-test-framework/1.0",
+  "Accept-Encoding": "gzip, deflate, zstd",
+  "Accept": "application/json",
+  "Connection": "keep-alive",
+  "Content-Type": "application/json",
+  "X-Spree-Api-Key": "pk_rJG***F4",
+  "Authorization": "Bearer***mo"
+}
+--- body ---
+{
+  "first_name": "QA",
+  "last_name": "Bot",
+  "address1": "1 Test Road",
+  "city": "Shanghai",
+  "postal_code": "200000",
+  "phone": "13800000000",
+  "country_iso": "CN",
+  "state_name": "Shanghai",
+  "label": "qa:43443084311"
+}

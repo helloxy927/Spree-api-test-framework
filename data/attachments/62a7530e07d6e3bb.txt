@@ -1,0 +1,17 @@
+HTTP 404   耗时 15 ms
+--- headers ---
+{
+  "x-frame-options": "SAMEORIGIN",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "no-cache",
+  "x-request-id": "4b465cd0-6ad7-482b-ad72-de56a1566c86",
+  "x-runtime": "0.013192",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "74"
+}
+--- body ---
+{"error":{"code":"record_not_found","message":"未找到 Payment method"}}

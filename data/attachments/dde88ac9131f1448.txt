@@ -1,0 +1,21 @@
+HTTP 200   耗时 225 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9943",
+  "x-request-id": "160a29ae-512b-4e36-b4ee-70ec6a6d607d",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "etag": "W/\"2ca821a46baa6b7e5dc7c462adf1f36d\"",
+  "cache-control": "max-age=0, private, must-revalidate",
+  "x-runtime": "0.222013",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "743"
+}
+--- body ---
+{"token":"eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMiwidXNlcl90eXBlIjoiY3VzdG9tZXIiLCJqdGkiOiI3MGNiZmJlOS0xMjk2LTQzM2MtOGIxNC04ZDQwNGExOGI1Y2UiLCJpc3MiOiJzcHJlZSIsImF1ZCI6InN0b3JlX2FwaSIsImV4cCI6MTc5NDU4MzgxOH0.m-_TcgaPxBMHSaEV3MjcIdLzw8KsMSqCRnBVJankVmo","refresh_token":"3s77bAYRXkA7AdwvbMJedZfF","user":{"id":"cust_YHETxCGlb0","email":"customer@example.com","first_name":"QA","last_name":"Bot","phone":"13800000000","accepts_email_marketing":false,"email_marketing_consent_updated_at":"2026-11-10T10:15:03Z","full_name":"QA Bot","available_store_credit_total":"0.00","display_available_store_credit_total":"¥0.00","addresses":[],"default_billing_address":null,"default_shipping_address":null,"newsletter_subscriber":null,"customer_groups":[]}}

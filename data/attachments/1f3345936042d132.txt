@@ -1,0 +1,17 @@
+HTTP 404   耗时 32 ms
+--- headers ---
+{
+  "x-frame-options": "SAMEORIGIN",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "cache-control": "no-cache",
+  "x-request-id": "85467af4-098d-4d1e-be38-b60e10635ae5",
+  "x-runtime": "0.028602",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "67"
+}
+--- body ---
+{"error":{"code":"record_not_found","message":"未找到 Product"}}

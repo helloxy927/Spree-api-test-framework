@@ -1,0 +1,16 @@
+PATCH http://localhost:3000/api/v3/store/carts/cart_JmnaEBgznC
+--- headers ---
+{
+  "User-Agent": "spree-api-test-framework/1.0",
+  "Accept-Encoding": "gzip, deflate, zstd",
+  "Accept": "application/json",
+  "Connection": "keep-alive",
+  "Content-Type": "application/json",
+  "X-Spree-Api-Key": "pk_rJG***F4",
+  "Authorization": "Bearer***mo",
+  "X-Spree-Token": "rb8ER7***Vi"
+}
+--- body ---
+{
+  "customer_note": "qa:43443084311"
+}

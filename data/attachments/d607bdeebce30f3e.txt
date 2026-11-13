@@ -1,0 +1,18 @@
+POST http://localhost:3000/api/v3/store/customers
+--- headers ---
+{
+  "User-Agent": "spree-api-test-framework/1.0",
+  "Accept-Encoding": "gzip, deflate, zstd",
+  "Accept": "application/json",
+  "Connection": "keep-alive",
+  "Content-Type": "application/json",
+  "X-Spree-Api-Key": "pk_rJG***F4"
+}
+--- body ---
+{
+  "email": "qa_43443084311_register_8da8b6@example.test",
+  "password": "Passw0rd!",
+  "password_confirmation": "Passw0rd!",
+  "first_name": "QA",
+  "last_name": "Bot"
+}
