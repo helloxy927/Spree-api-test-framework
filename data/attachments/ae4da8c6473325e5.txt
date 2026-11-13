@@ -1,0 +1,14 @@
+POST http://localhost:3000/api/v3/store/carts/cart_b11Zn4Y5Fq/complete
+--- headers ---
+{
+  "User-Agent": "spree-api-test-framework/1.0",
+  "Accept-Encoding": "gzip, deflate, zstd",
+  "Accept": "application/json",
+  "Connection": "keep-alive",
+  "Content-Type": "application/json",
+  "X-Spree-Api-Key": "pk_rJG***F4",
+  "Authorization": "Bearer***W4",
+  "X-Spree-Token": "zuPSKt***47"
+}
+--- body ---
+(empty)

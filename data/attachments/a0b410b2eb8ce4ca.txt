@@ -1,0 +1,21 @@
+HTTP 201   耗时 104 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9760",
+  "x-request-id": "0667f0fb-645e-4868-93ad-041d3d1dfbe3",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "etag": "W/\"ae109b178ddced7de0280d56f63a5c61\"",
+  "cache-control": "max-age=0, private, must-revalidate",
+  "x-runtime": "0.101962",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "3550"
+}
+--- body ---
+{"id":"cart_LR4pHOn63V","market_id":"mkt_UkLWZg9DAJ","channel_id":"ch_UkLWZg9DAJ","preferred_stock_location_id":null,"company_id":null,"company_name":null,"po_number_required":false,"po_document_filename":null,"po_document_byte_size":null,"number":"cart_LR4pHOn63V","token":"c6AV3HTaQoN8oL2PXt6ePP6F","email":null,"customer_note":"qa:43243803789","po_number":null,"currency":"CNY","locale":"zh-CN","total_quantity":1,"warnings":[],"coupon_code":null,"item_total":"879.99","display_item_total":"¥879.99","discount_total":"0.00","display_discount_total":"¥0.00","tax_total":"0.00","display_tax_total":"¥0.00","included_tax_total":"0.00","display_included_tax_total":"¥0.00","additional_tax_total":"0.00","display_additional_tax_total":"¥0.00","delivery_total":"0.00","display_delivery_total":"¥0.00","fee_total":"0.00","display_fee_total":"¥0.00","gift_card_total":"0.00","display_gift_card_total":"¥0.00","store_credit_total":"0.00","display_store_credit_total":"¥0.00","total":"879.99","display_total":"¥879.99","amount_due":"879.99","display_amount_due":"¥879.99","covered_by_store_credit":false,"payments":[],"adjustment_total":"0.00","display_adjustment_total":"¥0.00","current_step":"address","completed_steps":[],"requirements":[{"code":"email_required","step":"address","field":"email","message":"需要填写电子邮箱地址"},{"code":"ship_address_required","step":"address","field":"ship_address","message":"需要填写收货地址"},{"code":"delivery_method_required","step":"delivery","field":"shipping_method","message":"Select a delivery method for all fulfillments"},{"code":"payment_required","step":"payment","field":"payment","message":"请添加支付方式"}],"order_minimum":null,"order_minimum_shortfall":null,"below_order_minimum":false,"freight_summary":null,"shipping_eq_billing_address":false,"discounts":[],"fees":[],"items":[{"id":"li_QZBA48cIW7","variant_id":"variant_gbHJdmfrXB","seller_id":null,"preorder":false,"preorder_ships_at":null,"quantity":1,"currency":"CNY","name":"Automatic Espresso Machine","slug":"automatic-espresso-machine","options_text":"Color: Matte Black","price":"879.99","display_price":"¥879.99","total":"879.99","display_total":"¥879.99","adjustment_total":"0.00","display_adjustment_total":"¥0.00","additional_tax_total":"0.00","display_additional_tax_total":"¥0.00","included_tax_total":"0.00","display_included_tax_total":"¥0.00","discount_total":"0.00","display_discount_total":"¥0.00","pre_tax_amount":"879.99","display_pre_tax_amount":"¥879.99","discounted_amount":"879.99","display_discounted_amount":"¥879.99","display_compare_at_amount":"¥0.00","compare_at_amount":null,"thumbnail_url":"http://localhost:3000/rails/active_storage/blobs/proxy/eyJfcmFpbHMiOnsiZGF0YSI6MywicHVyIjoiYmxvYl9pZCJ9fQ==--b04a0bb55f4883960bdf70e41e3f048480e3f864/automatic-espresso-machine-matte-black.webp","option_values":[{"id":"optval_VqXmZF31wY","option_type_id":"opt_UkLWZg9DAJ","name":"matte-black","label":"Matte Black","position":1,"color_code":null,"option_type_name":"color","option_type_label":"Color","image_url":null}],"digital_links":[]}],"fulfillments":[],"billing_address":null,"shipping_address":null,"payment_methods":[{"id":"pm_EfhxLZ9ck8","name":"Check","description":"Pay by check.","type":"check","session_required":false,"source_required":false}],"gift_card":null,"market":{"id":"mkt_UkLWZg9DAJ","name":"China","currency":"CNY","default_locale":"zh-CN","tax_inclusive":false,"default":true,"country_codes":["CN"],"country_isos":["CN"],"supported_locales":["zh-CN"]}}

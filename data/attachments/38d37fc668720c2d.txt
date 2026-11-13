@@ -1,0 +1,9 @@
+curl -X POST 'http://localhost:3000/api/v3/store/carts/cart_vzFmzDoNU0/payments' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'X-Spree-Api-Key: pk_rJG***F4' \
+  -H 'Authorization: Bearer***W4' \
+  -H 'X-Spree-Token: ewSxFz***yJ' \
+  --data '{
+  "payment_method_id": "pm_does_not_exist"
+}'

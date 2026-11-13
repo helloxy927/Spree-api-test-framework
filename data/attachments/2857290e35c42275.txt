@@ -1,0 +1,6 @@
+curl -X GET 'http://localhost:3000/api/v3/store/carts/cart_HWSVtlDrOm' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -H 'X-Spree-Api-Key: pk_rJG***F4' \
+  -H 'Authorization: Bearer***W4' \
+  -H 'X-Spree-Token: SnAyHy***CN'

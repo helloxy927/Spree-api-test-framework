@@ -1,0 +1,20 @@
+HTTP 422   耗时 44 ms
+--- headers ---
+{
+  "x-frame-options": "DENY",
+  "x-xss-protection": "0",
+  "x-content-type-options": "nosniff",
+  "x-permitted-cross-domain-policies": "none",
+  "referrer-policy": "strict-origin-when-cross-origin",
+  "content-type": "application/json; charset=utf-8",
+  "x-ratelimit-limit": "10000",
+  "x-ratelimit-remaining": "9856",
+  "x-request-id": "db5b7420-8cb1-4f8c-8020-840795b21dd7",
+  "permissions-policy": "camera=(), microphone=(), geolocation=()",
+  "cache-control": "no-cache",
+  "x-runtime": "0.042438",
+  "x-robots-tag": "noindex, nofollow",
+  "content-length": "332"
+}
+--- body ---
+{"error":{"code":"cart_cannot_complete","message":"{code: \"validation_failed\", errors: [{code: \"line_items_required\", step: \"cart\", field: \"line_items\", message: \"请至少向购物车中添加一件商品\"}, {code: \"email_required\", step: \"address\", field: \"email\", message: \"需要填写电子邮箱地址\"}]}"}}
