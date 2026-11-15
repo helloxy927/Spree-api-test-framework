@@ -83,7 +83,11 @@ jobs:
             npm install -g allure-commandline 2>&1 | tee npm-install.log
           fi
 
-      # 开机后 Docker/Spree 可能还在启动，先等接口真正可用，避免「环境类」假失败
+      # Spree 平时是关闭的（省内存/降温），任务真正开始时才拉起；
+      # 启动脚本在本机 D:\actions-runner\ensure-sut.ps1，会等 3000 端口可用再返回。
+      - name: 确保被测系统运行
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File "D:/actions-runner/ensure-sut.ps1"
+
       - name: 等待被测系统就绪
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
@@ -164,3 +168,9 @@ jobs:
           publish_branch: gh-pages
           publish_dir: ./allure-report
           keep_files: true
+
+      # 跑完把 Spree 与 Docker 关掉，释放约 3GB 内存；下次任务会由上面那步自动拉起
+      - name: 停止被测系统
+        if: always()
+        continue-on-error: true
+        run: powershell -NoProfile -ExecutionPolicy Bypass -File "D:/actions-runner/stop-stack.cmd"
