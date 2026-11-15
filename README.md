@@ -1,5 +1,8 @@
 # Spree Store API 自动化测试框架
 
+[![api-tests](https://github.com/helloxy927/Spree-api-test-framework/actions/workflows/api-tests.yml/badge.svg)](https://github.com/helloxy927/Spree-api-test-framework/actions/workflows/api-tests.yml)
+[![Allure Report](https://img.shields.io/badge/report-GitHub%20Pages-blue)](https://helloxy927.github.io/Spree-api-test-framework/)
+
 针对 **Spree Commerce v6 Store API** 的接口自动化框架：pytest + requests + SQLAlchemy + Allure + GitHub Actions。
 
 覆盖登录鉴权、用户、商品、购物车、订单、支付回调六大模块，断言分三层：**HTTP 状态 → 业务码/关键字段 → 数据库状态**。
