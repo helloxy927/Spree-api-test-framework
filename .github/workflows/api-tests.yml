@@ -3,23 +3,28 @@
 name: api-tests
 
 on:
-  schedule:
-    # UTC 06:10 = 北京时间 14:10；cron 只认 UTC
-    - cron: "10 6 * * *"
+  # ⏸ 定时与 push 触发已暂停（2026-11-16）：
+  #    本机代理节点不稳定，无法维持 Runner 与 GitHub 的长连接，
+  #    每日定时会在 Set up job 阶段失败，产生大量环境类红叉。
+  #    代理恢复后：取消下面 schedule 与 push 的注释，重启自托管 Runner 即可。
+  #
+  # schedule:
+  #   # UTC 06:10 = 北京时间 14:10；cron 只认 UTC
+  #   - cron: "10 6 * * *"
   workflow_dispatch:
     inputs:
       marker:
         description: "pytest -m 表达式（smoke / not slow / 空=全量）"
         default: "smoke"
         required: false
-  push:
-    branches: [main]
-    paths:
-      - "tests/**"
-      - "framework/**"
-      - "pytest.ini"
-      - "requirements.txt"
-      - ".github/workflows/api-tests.yml"
+  # push:
+  #   branches: [main]
+  #   paths:
+  #     - "tests/**"
+  #     - "framework/**"
+  #     - "pytest.ini"
+  #     - "requirements.txt"
+  #     - ".github/workflows/api-tests.yml"
 
 concurrency:
   group: api-tests-${{ github.ref }}

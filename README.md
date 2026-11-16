@@ -149,6 +149,11 @@ Spree-api-test-framework/
 
 ## 7. 持续集成
 
+> ⏸ **当前状态（2026-11-16）**：定时与 push 触发已暂停。
+> 原因是本机代理节点无法维持 Runner 与 GitHub 的长连接，任务会在 `Set up job` 阶段超时。
+> 恢复代理后，取消 `.github/workflows/api-tests.yml` 中 `schedule` / `push` 的注释并重启 Runner 即可。
+> 历史执行记录见 [docs/run-history.md](docs/run-history.md)。
+
 - 定时：每天 UTC 06:10（北京时间 14:10）跑**全量 60 条**
 - push 到 main：只跑**冒烟 2 条**，快速反馈
 - 手动：Actions → api-tests → Run workflow，可指定 marker
