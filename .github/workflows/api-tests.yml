@@ -3,28 +3,25 @@
 name: api-tests
 
 on:
-  # ⏸ 定时与 push 触发已暂停（2026-11-16）：
-  #    本机代理节点不稳定，无法维持 Runner 与 GitHub 的长连接，
-  #    每日定时会在 Set up job 阶段失败，产生大量环境类红叉。
-  #    代理恢复后：取消下面 schedule 与 push 的注释，重启自托管 Runner 即可。
-  #
-  # schedule:
-  #   # UTC 06:10 = 北京时间 14:10；cron 只认 UTC
-  #   - cron: "10 6 * * *"
+  schedule:
+    # 每日 14:10（北京时间）跑冒烟：验证调度链路与环境稳定性
+    - cron: "10 6 * * *"
+    # 每周日 14:30（北京时间）跑全量 60 条
+    - cron: "30 6 * * 0"
   workflow_dispatch:
     inputs:
       marker:
         description: "pytest -m 表达式（smoke / not slow / 空=全量）"
         default: "smoke"
         required: false
-  # push:
-  #   branches: [main]
-  #   paths:
-  #     - "tests/**"
-  #     - "framework/**"
-  #     - "pytest.ini"
-  #     - "requirements.txt"
-  #     - ".github/workflows/api-tests.yml"
+  push:
+    branches: [main]
+    paths:
+      - "tests/**"
+      - "framework/**"
+      - "pytest.ini"
+      - "requirements.txt"
+      - ".github/workflows/api-tests.yml"
 
 concurrency:
   group: api-tests-${{ github.ref }}
@@ -122,9 +119,14 @@ jobs:
         run: |
           EVENT="${{ github.event_name }}"
           INPUT="${{ github.event.inputs.marker }}"
+          SCHED="${{ github.event.schedule }}"
           if [ "$EVENT" = "schedule" ]; then
-            # 每天定时跑全量 60 条
-            MARKER=""
+            # 周日 06:30 UTC 那条 cron 跑全量；每日 06:10 那条只跑冒烟
+            if [ "$SCHED" = "30 6 * * 0" ]; then
+              MARKER=""
+            else
+              MARKER="smoke"
+            fi
           elif [ -n "$INPUT" ]; then
             MARKER="$INPUT"
           else
@@ -132,7 +134,7 @@ jobs:
             MARKER="smoke"
           fi
 
-          echo "event=$EVENT marker=${MARKER:-<全量>}"
+          echo "event=$EVENT schedule=$SCHED marker=${MARKER:-<全量>}"
           if [ -z "$MARKER" ]; then
             python -m pytest --alluredir=allure-results --clean-alluredir
           else

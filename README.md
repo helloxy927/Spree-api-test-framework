@@ -149,15 +149,15 @@ Spree-api-test-framework/
 
 ## 7. 持续集成
 
-> ⏸ **当前状态（2026-11-16）**：定时与 push 触发已暂停。
-> 原因是本机代理节点无法维持 Runner 与 GitHub 的长连接，任务会在 `Set up job` 阶段超时。
-> 恢复代理后，取消 `.github/workflows/api-tests.yml` 中 `schedule` / `push` 的注释并重启 Runner 即可。
-> 历史执行记录见 [docs/run-history.md](docs/run-history.md)。
-
-- 定时：每天 UTC 06:10（北京时间 14:10）跑**全量 60 条**
-- push 到 main：只跑**冒烟 2 条**，快速反馈
+- **每日** 14:10（北京时间）：跑**冒烟 2 条**，验证调度链路与环境稳定性
+- **每周日** 14:30：跑**全量 60 条**
+- push 到 main：跑**冒烟 2 条**，快速反馈
 - 手动：Actions → api-tests → Run workflow，可指定 marker
 - 报告：artifact 保留 30 天，同时发布到 `gh-pages` 分支
+
+> 为什么每日只跑冒烟：本机代理的长连接不稳定，全量跑一次要 2~3 分钟、且更容易被网络中断打断；
+> 冒烟 1 分钟内跑完，同样能验证「Runner 在线 + SUT 可启动 + 报告链路」是否正常。
+> 全量放在每周日，用更少的次数换取更完整的覆盖。历史记录见 [docs/run-history.md](docs/run-history.md)。
 
 **必须在仓库 Settings → Secrets 里配**：`BASE_URL`、`API_KEY`、`CUSTOMER_EMAIL`、`CUSTOMER_PASSWORD`、`DB_DSN`。
 
