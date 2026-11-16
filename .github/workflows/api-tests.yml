@@ -155,8 +155,11 @@ jobs:
           RUN_ID: ${{ github.run_id }}
         run: python scripts/cleanup_test_data.py --yes
 
+      # 这两个 action 每次可能要重新下载压缩包，而本机代理对大文件传输不稳定；
+      # 允许失败：网络好时正常上传报告，网络差时不影响任务的通过/失败结论。
       - name: 上传报告与日志
         if: always()
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: allure-report-${{ github.run_id }}
@@ -165,7 +168,6 @@ jobs:
             allure-results
           retention-days: 30
 
-      # Pages 还没启用时这步会失败，不影响测试结论，先允许它红
       - name: 发布到 GitHub Pages
         if: always() && (github.ref == 'refs/heads/main' || github.event_name == 'schedule')
         continue-on-error: true
