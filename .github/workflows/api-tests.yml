@@ -155,28 +155,25 @@ jobs:
           RUN_ID: ${{ github.run_id }}
         run: python scripts/cleanup_test_data.py --yes
 
-      # 这两个 action 每次可能要重新下载压缩包，而本机代理对大文件传输不稳定；
-      # 允许失败：网络好时正常上传报告，网络差时不影响任务的通过/失败结论。
-      - name: 上传报告与日志
-        if: always()
-        continue-on-error: true
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-report-${{ github.run_id }}
-          path: |
-            allure-report
-            allure-results
-          retention-days: 30
-
+      # 只用 checkout（已缓存）。报告通过普通 git push 发布，不依赖额外 action，
+      # 避免 Set up job 阶段预下载 action 压缩包被代理掐断。
       - name: 发布到 GitHub Pages
         if: always() && (github.ref == 'refs/heads/main' || github.event_name == 'schedule')
         continue-on-error: true
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./allure-report
-          keep_files: true
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [ ! -d allure-report ]; then echo "no report, skip"; exit 0; fi
+          PORT=$(powershell -NoProfile -Command "(Get-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer -replace '.*:',''" | tr -d '\r')
+          cd allure-report
+          git init -q
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -qm "report ${GITHUB_RUN_ID}" || true
+          git -c http.proxy="http://127.0.0.1:${PORT}" -c https.proxy="http://127.0.0.1:${PORT}" \
+            push -f "https://x-access-token:${TOKEN}@github.com/${REPO}.git" HEAD:gh-pages
 
       # 跑完把 Spree 与 Docker 关掉，释放约 3GB 内存；下次任务会由上面那步自动拉起
       - name: 停止被测系统
