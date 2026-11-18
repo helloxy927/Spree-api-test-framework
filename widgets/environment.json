@@ -1,0 +1,1 @@
+[{"values":["http://localhost:3000"],"name":"BASE_URL"},{"values":["44310535872"],"name":"RUN_ID"},{"values":["3.12.10"],"name":"Python"},{"values":["Windows-11-10.0.26200-SP0"],"name":"Platform"},{"values":["true"],"name":"CI"},{"values":["30a09a9522c1a47b046ba768ac33ed1f478a1589"],"name":"GIT_COMMIT"},{"values":["main"],"name":"GIT_BRANCH"}]
