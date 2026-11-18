@@ -32,20 +32,29 @@ class TestProductList:
 
     @allure.story("第二页不重复")
     def test_second_page_does_not_overlap(self, api):
-        first = expect.assert_business_ok(api.get(f"{STORE}/products", params={"per_page": 5}))["data"]
+        # 必须显式指定稳定排序，否则 PostgreSQL 的 LIMIT/OFFSET 顺序不确定，
+        # 相邻两页可能出现重复数据（这是一个真实的接口行为坑）
+        params = {"limit": 5, "sort": "id"}
+        first = expect.assert_business_ok(
+            api.get(f"{STORE}/products", params={**params, "page": 1})
+        )["data"]
         second = expect.assert_business_ok(
-            api.get(f"{STORE}/products", params={"per_page": 5, "page": 2})
+            api.get(f"{STORE}/products", params={**params, "page": 2})
         )["data"]
 
-        ids_first = {p["id"] for p in first}
-        ids_second = {p["id"] for p in second}
-        assert not (ids_first & ids_second), f"两页出现重复商品: {ids_first & ids_second}"
+        ids_first = [p["id"] for p in first]
+        ids_second = [p["id"] for p in second]
+        assert not (set(ids_first) & set(ids_second)), (
+            f"两页出现重复商品: {set(ids_first) & set(ids_second)}"
+        )
+        assert len(ids_first) == len(set(ids_first)), "第一页内部有重复"
+        assert len(ids_second) == len(set(ids_second)), "第二页内部有重复"
 
     @allure.story("按名称过滤")
     def test_filter_by_name(self, api):
         keyword = "Espresso"
         body = expect.assert_business_ok(
-            api.get(f"{STORE}/products", params={"q[name_cont]": keyword, "per_page": 50})
+            api.get(f"{STORE}/products", params={"q[name_cont]": keyword, "limit": 50})
         )
         data = body["data"]
         assert data, f"按 {keyword} 过滤没有结果"
@@ -87,7 +96,7 @@ class TestProductDetail:
 
     @allure.story("按 slug 查详情")
     def test_detail_by_slug(self, api):
-        listed = expect.assert_business_ok(api.get(f"{STORE}/products", params={"per_page": 1}))["data"][0]
+        listed = expect.assert_business_ok(api.get(f"{STORE}/products", params={"limit": 1}))["data"][0]
         resp = api.get(f"{STORE}/products/{listed['slug']}")
         body = expect.assert_business_ok(resp)
 
@@ -102,7 +111,7 @@ class TestProductDetail:
     @allure.story("价格币种与店铺一致")
     def test_price_currency_matches_store(self, api, db):
         product = expect.assert_business_ok(
-            api.get(f"{STORE}/products", params={"per_page": 1})
+            api.get(f"{STORE}/products", params={"limit": 1})
         )["data"][0]
         price = product.get("price") or {}
         assert price.get("amount") is not None, "商品没有价格，检查 prepare_sut 的基价步骤"
@@ -115,7 +124,7 @@ class TestProductDetail:
     @pytest.mark.db
     def test_price_matches_database(self, api, db):
         product = expect.assert_business_ok(
-            api.get(f"{STORE}/products", params={"per_page": 1})
+            api.get(f"{STORE}/products", params={"limit": 1})
         )["data"][0]
 
         row = db.fetch_one(
@@ -143,7 +152,7 @@ class TestProductDetail:
     @pytest.mark.db
     def test_availability_matches_database(self, api, db):
         product = expect.assert_business_ok(
-            api.get(f"{STORE}/products", params={"per_page": 1})
+            api.get(f"{STORE}/products", params={"limit": 1})
         )["data"][0]
 
         row = db.fetch_one(
