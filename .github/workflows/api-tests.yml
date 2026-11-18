@@ -137,6 +137,8 @@ jobs:
           echo "event=$EVENT schedule=$SCHED marker=${MARKER:-<全量>}"
           if [ -z "$MARKER" ]; then
             python -m pytest --alluredir=allure-results --clean-alluredir
+            # 只有全量跑才留标记，用于决定是否覆盖 Pages 上的报告
+            touch .full-run
           else
             python -m pytest -m "$MARKER" --alluredir=allure-results --clean-alluredir
           fi
@@ -164,6 +166,8 @@ jobs:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
         run: |
+          # 冒烟跑出来的 2 条报告不要覆盖 Pages 上的全量报告
+          if [ ! -f .full-run ]; then echo "非全量运行，跳过报告发布"; exit 0; fi
           if [ ! -d allure-report ]; then echo "no report, skip"; exit 0; fi
           PORT=$(powershell -NoProfile -Command "(Get-ItemProperty 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings').ProxyServer -replace '.*:',''" | tr -d '\r')
           cd allure-report
